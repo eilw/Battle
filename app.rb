@@ -1,11 +1,9 @@
 require 'sinatra/base'
 
 class Battle < Sinatra::Base
-  get '/' do
-    'Hello Battle!'
-  end
-
-  run! if app_file == $0
+  # get '/' do
+  #   'Hello Battle!'
+  # end
 
   get '/' do
     erb(:index)
@@ -13,6 +11,10 @@ class Battle < Sinatra::Base
 
   post '/names' do
     @name = params[:Player1_name]
+    @name2 = params[:Player2_name]
     erb(:play)
   end
+
+  run! if app_file == $0
+
 end
