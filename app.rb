@@ -1,9 +1,6 @@
 require 'sinatra/base'
 
 class Battle < Sinatra::Base
-  # get '/' do
-  #   'Hello Battle!'
-  # end
   enable :sessions
 
   get '/' do
@@ -22,7 +19,11 @@ class Battle < Sinatra::Base
     redirect to('/play')
   end
 
-
+  get '/attack' do
+    @name = session[:name]
+    @name2 = session[:name2]
+    erb :attack
+  end
 
   run! if app_file == $0
 
