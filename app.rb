@@ -22,6 +22,8 @@ class Battle < Sinatra::Base
     redirect to('/play')
   end
 
+
+
   run! if app_file == $0
 
 end
