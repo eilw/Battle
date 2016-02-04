@@ -19,6 +19,7 @@ class Battle < Sinatra::Base
 
   get '/play' do
     @max_health    = Player::MAX_HEALTH
+    @go            = $game.go.name
     @player_1_hp   = $game.player_1.hp
     @player_2_hp   = $game.player_2.hp
     @player_1_name = $game.player_1.name

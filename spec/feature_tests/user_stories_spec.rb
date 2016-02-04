@@ -36,8 +36,7 @@ feature 'attack' do
 
   scenario "so player 1 can return to the play page after their attack, there is a working continue button" do
     sign_in_and_play
-    click_button 'ATTACK!'
-    click_button 'Continue'
+    attack_and_confirm
     expect(page).to have_content ' HP'
   end
 
@@ -50,8 +49,26 @@ end
 feature 'reduce hp' do
   scenario 'an attack reduces the hp of player' do
     sign_in_and_play
-    click_button 'ATTACK!'
-    click_button 'Continue'
+    attack_and_confirm
     expect(page).to have_content 'Joe: 90/100 HP'
+  end
+end
+
+# USER STORY FIVE
+# As two Players,
+# So we can continue our game of Battle,
+# We want to switch turns
+
+feature 'switch turns' do
+  scenario 'happens after an attack' do
+    sign_in_and_play
+    attack_and_confirm
+    expect(page).to have_content 'Joe is playing'
+  end
+
+  scenario 'happens after an attack' do
+    sign_in_and_play
+    2.times{attack_and_confirm}
+    expect(page).to have_content 'Vicky is playing'
   end
 end

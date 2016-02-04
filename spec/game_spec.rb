@@ -21,7 +21,12 @@ describe 'Game' do
       expect(player_2).to receive(:reduce_hp)
       game.attack(player_2)
     end
+  end
 
-
+  describe '#switch-turns' do
+    it 'changes the player in control' do
+      game.switch_turns
+      expect(game.go).to eq player_2
+    end
   end
 end
