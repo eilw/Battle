@@ -17,8 +17,8 @@ describe Player do
       expect(player.hp).to eq(60)
     end
 
-    it 'a players HP can be reduced' do
-      player.reduce_hp
+    it 'a players HP can be reduced with a specific value' do
+      player.reduce_hp(10)
       expect(player.hp).to eq(50)
     end
 

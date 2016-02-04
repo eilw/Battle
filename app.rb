@@ -1,6 +1,8 @@
 require 'sinatra/base'
 require './lib/player.rb'
 require './lib/game.rb'
+require './lib/attack.rb'
+
 
 class Battle < Sinatra::Base
 
@@ -14,6 +16,7 @@ class Battle < Sinatra::Base
     player1 = params['Player 1']
     player2 = params['Player 2']
     $game = Game.new(Player.new(player1),Player.new(player2))
+    $attacks = Attack.new
     redirect '/play'
   end
 
@@ -24,7 +27,8 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     @game = $game
-    @game.attack
+    $attacks.basic($game.player_waiting)
+    $game.switches($attacks.switches)
     session['Attack'] = params['action']
     if @game.game_over?
       redirect '/game_over'

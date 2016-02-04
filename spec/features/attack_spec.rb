@@ -5,16 +5,16 @@ feature 'Attack' do
     expect(page).to have_content('Attack successful:')
   end
 
-  scenario 'Attack on player 2 reduces HP with 10' do
+  scenario 'Attack on player 2 reduces HP' do
     sign_in_and_play
     attack
-    expect(page).to have_content('Emma: 50/60 HP')
+    expect(page).not_to have_content("Emma: 60/60 HP")
   end
 
-  scenario 'Attack on player 1 reduces HP with 10' do
+  scenario 'Attack on player 1 reduces HP' do
     sign_in_and_play
     2.times{attack}
-    expect(page).to have_content('Eirik: 50/60 HP')
+    expect(page).not_to have_content('Eirik: 60/60 HP')
   end
 
   scenario 'Being able to poison the other player' do

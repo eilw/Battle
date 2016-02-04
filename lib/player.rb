@@ -14,8 +14,8 @@ class Player
     @name.dup
   end
 
-  def reduce_hp
-    @hp -= HP_REDUCUTION
+  def reduce_hp(damage)
+    @hp -= damage
   end
 
 end

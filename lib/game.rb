@@ -8,9 +8,8 @@ class Game
     @player_waiting = player_2
   end
 
-  def attack
-    @player_waiting.reduce_hp
-    switch_turn
+  def switches(nr)
+    nr.times{switch_turn}
   end
 
   def game_over?
@@ -28,7 +27,7 @@ class Game
   end
 
   def loosing_player
-    player_1.hp == 0 || player_2.hp == 0
+    player_1.hp <= 0 || player_2.hp <= 0
   end
 
 

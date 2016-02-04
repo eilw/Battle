@@ -18,15 +18,10 @@ describe Game do
 
   end
 
-  describe '#attack' do
-
-    it 'calls the reduce_hp method on a player' do
-      expect(player_2).to receive(:reduce_hp)
-      game.attack
-    end
+  describe '#switches' do
 
     it 'switches the player in control' do
-      game.attack
+      game.switches(1)
       expect(game.player_in_control).to eq(player_2)
     end
 
