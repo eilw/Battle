@@ -33,4 +33,11 @@ feature 'attack' do
     click_button 'ATTACK!'
     expect(page).to have_content 'You have attacked your opponent!'
   end
+
+  scenario "so player 1 can return to the play page after their attack, there is a working continue button" do
+    sign_in_and_play
+    click_button 'ATTACK!'
+    click_button 'Continue'
+    expect(page).to have_content ' HP'
+  end
 end
