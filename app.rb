@@ -25,6 +25,7 @@ class Battle < Sinatra::Base
   post '/attack' do
     @game = $game
     @game.attack
+    session['Attack'] = params['action']
     if @game.game_over?
       redirect '/game_over'
     else
@@ -34,7 +35,9 @@ class Battle < Sinatra::Base
 
   get '/attack' do
     @game = $game
+    @attack = session['Attack']
     @player_waiting = @game.player_in_control
+
     erb :attack
   end
 
