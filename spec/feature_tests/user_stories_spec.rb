@@ -40,4 +40,19 @@ feature 'attack' do
     click_button 'Continue'
     expect(page).to have_content ' HP'
   end
+
+end
+
+# USER STORY FOUR
+# As Player 1,
+# So I can start to win a game of Battle,
+# I want my attack to reduce Player 2's HP
+
+feature 'reduce hp' do
+  scenario 'an attack reduces the hp of player' do
+    sign_in_and_play
+    click_button 'ATTACK!'
+    click_button 'Continue'
+    expect(page).to have_content 'Joe: 90/100 HP'
+  end
 end

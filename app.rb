@@ -4,7 +4,6 @@ require 'player'
 class Battle < Sinatra::Base
 
   enable :sessions
-  MAX_HEALTH = 100
 
   get '/' do
     erb(:index)
@@ -17,12 +16,16 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
+    @max_health = Player::MAX_HEALTH
+    @player_1_hp = $player_1.hp
+    @player_2_hp = $player_2.hp
     @player_1_name   = $player_1.name
     @player_2_name   = $player_2.name
     erb(:play)
   end
 
   post '/attack' do
+    $player_2.reduce_hp
     redirect to('/attack_confirmation')
   end
 
