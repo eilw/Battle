@@ -13,9 +13,12 @@ class Player
     @name
   end
 
+  # def attack(player)  --> Moved to game.rb
+  #   player.reduce_hp
+  # end
+
   def reduce_hp
     @hp -= DAMAGE
   end
-
 
 end

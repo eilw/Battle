@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'player'
+require 'game'
 
 class Battle < Sinatra::Base
 
@@ -10,22 +11,23 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    $player_1 = Player.new(params[:player_1_name])
-    $player_2 = Player.new(params[:player_2_name])
+    player_1 = Player.new(params[:player_1_name])
+    player_2 = Player.new(params[:player_2_name])
+    $game = Game.new(player_1, player_2)
     redirect to('/play')
   end
 
   get '/play' do
-    @max_health = Player::MAX_HEALTH
-    @player_1_hp = $player_1.hp
-    @player_2_hp = $player_2.hp
-    @player_1_name   = $player_1.name
-    @player_2_name   = $player_2.name
+    @max_health    = Player::MAX_HEALTH
+    @player_1_hp   = $game.player_1.hp
+    @player_2_hp   = $game.player_2.hp
+    @player_1_name = $game.player_1.name
+    @player_2_name = $game.player_2.name
     erb(:play)
   end
 
   post '/attack' do
-    $player_2.reduce_hp
+    $game.attack($game.player_2)
     redirect to('/attack_confirmation')
   end
 

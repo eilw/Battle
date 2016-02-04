@@ -47,7 +47,6 @@ end
 # As Player 1,
 # So I can start to win a game of Battle,
 # I want my attack to reduce Player 2's HP
-
 feature 'reduce hp' do
   scenario 'an attack reduces the hp of player' do
     sign_in_and_play

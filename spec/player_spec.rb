@@ -14,16 +14,10 @@ describe Player do
     end
   end
 
-  describe '#attack' do
-    it 'the hp can be reduced' do
-      expect{player.reduce_hp}.to change{player.hp}.by(-Player::DAMAGE)
-    end
-
-    xit 'an attack reduces the hp of the other player' do
-      expect{player.attack}.to change{player.hp}.by(-Player::DAMAGE)
-    end
-
-
-  end
+  # describe '#attack' do
+  #   it 'an attack reduces the hp of the other player' do
+  #     player_2 = Player.new(:name)
+  #     expect{player.attack(player_2)}.to change{player_2.hp}.by(-Player::DAMAGE)
+  #   end
 
 end
