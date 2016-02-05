@@ -15,7 +15,7 @@ describe Attack do
   describe '#switches' do
     it 'gives a number of turns based on the attack' do
       attack.attack(player_1)
-      expect(attack.switches).to eq(1)
+      expect(attack.switches).to eq(0)
     end
   end
 

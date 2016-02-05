@@ -29,7 +29,8 @@ class Battle < Sinatra::Base
     @game = $game
     session['Attack'] = params['action']
     $attacks.type_of_attack(session['Attack'],$game.player_waiting)
-    $game.switches($attacks.switches)
+    $player_waiting = $game.player_waiting
+    $game.pause_switching($attacks.switches)
 
     if @game.game_over?
       redirect '/game_over'
@@ -41,7 +42,7 @@ class Battle < Sinatra::Base
   get '/attack' do
     @game = $game
     @attack = session['Attack']
-    @player_waiting = @game.player_in_control
+    @player_waiting = $player_waiting
 
     erb :attack
   end

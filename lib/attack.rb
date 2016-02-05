@@ -14,11 +14,10 @@ class Attack
   end
 
   def attack(player)
-    @switches = 1
+    @switches = 0
     player.reduce_hp(random_pain)
   end
 
-  private
 
   def poison(player)
     attack(player)
@@ -29,7 +28,7 @@ class Attack
   end
 
   def paralyse(player)
-    attack(player)
+    @switches = 2
   end
 
   def sleep(player)
@@ -37,7 +36,7 @@ class Attack
   end
 
   def random_pain
-    rand(PAIN_RANGE)
+    Kernel.rand(PAIN_RANGE)
   end
 
 end

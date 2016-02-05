@@ -21,8 +21,15 @@ describe Game do
   describe '#switches' do
 
     it 'switches the player in control' do
-      game.switches(1)
+      game.switch
       expect(game.player_in_control).to eq(player_2)
+    end
+
+    it 'pauses switches based on attack' do
+      game.pause_switching(1)
+      game.switch
+      game.switch
+      expect(game.player_in_control).to eq(player_1)
     end
 
   end

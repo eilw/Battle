@@ -10,6 +10,9 @@ class Player
     @hp = DEFAULT_HP
   end
 
+
+
+
   def name
     @name.dup
   end

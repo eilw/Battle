@@ -6,10 +6,21 @@ class Game
     @player_2 = player_2
     @player_in_control = player_1
     @player_waiting = player_2
+    @switches = 0
   end
 
-  def switches(nr)
-    nr.times{switch_turn}
+  # def switches(nr)
+  #   nr.times{switch_players}
+  # end
+
+  def switch
+    switch_players if @switches == 0
+    @switches -= 1 if @switches > 0
+  end
+
+  def pause_switching(nr_of_switches)
+    @switches += nr_of_switches
+    switch
   end
 
   def game_over?
@@ -18,7 +29,7 @@ class Game
 
   private
 
-  def switch_turn
+  def switch_players
     if player_in_control == player_1
       @player_in_control, @player_waiting = player_2, player_1
     else
