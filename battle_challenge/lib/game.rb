@@ -32,5 +32,10 @@ attr_reader :player_1, :player_2, :turn
     turn ? @player_2 : @player_1
   end
 
+  def game_over?
+    @player_1.health <= 0 || @player_2.health <= 0
+  end
+
+
 
 end

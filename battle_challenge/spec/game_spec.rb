@@ -2,8 +2,8 @@ require 'game'
 
 describe Game do
 
-  let(:player_1) {double :player}
-  let(:player_2) {double :player}
+  let(:player_1) {double :player, health: 10}
+  let(:player_2) {double :player, health: 0 }
   subject(:game) { Game.new(player_1, player_2) }
 
   context '#attack' do
@@ -49,5 +49,9 @@ describe Game do
     end
   end
 
-
+  context '#game_over?' do
+    it 'a game is over when one of the player reaches 0 hp' do
+      expect(game).to be_game_over
+    end
+  end
 end
