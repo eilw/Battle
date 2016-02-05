@@ -27,9 +27,10 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     @game = $game
-    $attacks.basic($game.player_waiting)
-    $game.switches($attacks.switches)
     session['Attack'] = params['action']
+    $attacks.type_of_attack(session['Attack'],$game.player_waiting)
+    $game.switches($attacks.switches)
+
     if @game.game_over?
       redirect '/game_over'
     else
